@@ -1,0 +1,40 @@
+body{
+  font-family:sans-serif;
+  background:black;
+  color:white;
+  text-align:center;
+  margin:0;
+}
+
+.screen{
+  max-width:400px;
+  margin:auto;
+  padding:20px;
+}
+
+.chat{
+  background:#111;
+  padding:10px;
+  border-radius:10px;
+}
+
+.msg{
+  background:#222;
+  padding:8px;
+  margin:5px;
+  border-radius:10px;
+}
+
+.msg.right{
+  background:#ff004f;
+}
+
+button{
+  margin-top:20px;
+  padding:15px;
+  font-size:18px;
+  background:red;
+  color:white;
+  border:none;
+  border-radius:10px;
+}
