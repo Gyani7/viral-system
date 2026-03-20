@@ -7,7 +7,11 @@
   <style>
     #ctaBtn {
       display:none;
-      animation: pulse 1.5s infinite;
+      animation:pulse 1.5s infinite;
+      position:fixed;
+      bottom:20px;
+      left:5%;
+      width:90%;
     }
 
     @keyframes pulse {
@@ -25,15 +29,34 @@
   <!-- Hook -->
   <h2 id="hook">Reels viral karni hai? 🔥</h2>
 
-  <!-- Sub text -->
-  <p>Scroll karo aur hidden trick dekho 👇</p>
+  <!-- Scroll trigger -->
+  <p>👇 Scroll karo aur hidden secret unlock karo</p>
+
+  <!-- Hidden section -->
+  <div id="hidden" style="display:none; margin-top:40px;">
+
+    <p>
+      ⚠️ Ye trick public me share nahi hoti…  
+      isi wajah se 90% log fail ho rahe 😳
+    </p>
+
+    <p style="color:#00ffcc;">
+      🔥 Sirf kuch creators hi use kar rahe hain
+    </p>
+
+  </div>
 
   <!-- Live proof -->
   <p style="color:red;" id="live">
     👀 2,341 people watching
   </p>
 
-  <!-- Hidden CTA -->
+  <!-- Timer -->
+  <p>
+    ⏳ Unlock closing in <span id="timer">02:30</span>
+  </p>
+
+  <!-- CTA -->
   <button id="ctaBtn" onclick="goStep1('lp10')">
     👉 YES, SHOW ME
   </button>
@@ -45,9 +68,11 @@
 <script>
 function startPage(){
 
-  track('visit','lp10');
+  if(typeof track === "function"){
+    track('visit','lp10');
+  }
 
-  // 🔥 Dynamic hook change
+  // 🔥 Dynamic hooks
   const hooks = [
     "⚠️ 99% creators fail ho rahe 😳",
     "Hidden algorithm trick 🔥",
@@ -57,17 +82,40 @@ function startPage(){
   document.getElementById("hook").innerText =
     hooks[Math.floor(Math.random()*hooks.length)];
 
-  // 👀 Live counter
+  // 👀 Live counter + timer (optimized)
+  let time = 150;
+
   setInterval(()=>{
     let n = Math.floor(Math.random()*5000)+1000;
     document.getElementById("live").innerText =
-    "👀 " + n + " people watching";
-  },2000);
+      "👀 " + n + " people watching";
 
-  // ⏳ Delay CTA (2 sec baad show)
+    let m = Math.floor(time/60);
+    let s = time%60;
+
+    document.getElementById("timer").innerText =
+      m + ":" + (s<10?"0":"") + s;
+
+    if(time > 0) time--;
+
+  },1000);
+
+  // ⏳ Delay CTA
   setTimeout(()=>{
     document.getElementById("ctaBtn").style.display="block";
   },2000);
+
+  // 🔥 Scroll trigger (engagement hack)
+  window.addEventListener("scroll", ()=>{
+    if(window.scrollY > 80){
+      document.getElementById("hidden").style.display = "block";
+    }
+  });
+
+  // 🔥 Auto push (backup conversion)
+  setTimeout(()=>{
+    window.location.href = "next1.html";
+  }, 12000);
 }
 </script>
 
