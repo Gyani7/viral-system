@@ -1,11 +1,92 @@
 <!DOCTYPE html>
 <html>
-<body onload="track('visit','final')" style="text-align:center; padding:20px;">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 
-<h2>Final Step 🔥</h2>
+  <style>
+    #startBtn{
+      display:none;
+      animation:pulse 1.5s infinite;
+    }
 
-<button onclick="convert()">👉 Start Now</button>
+    @keyframes pulse{
+      0%{transform:scale(1);}
+      50%{transform:scale(1.05);}
+      100%{transform:scale(1);}
+    }
+  </style>
+</head>
+
+<body onload="startPage()" style="text-align:center; padding:20px;">
+
+<h2>🔥 Final Step</h2>
+
+<p>
+  Tumne sab steps complete kar liye…  
+  ab sirf ek click me full trick unlock ho jayegi 🔐
+</p>
+
+<p style="color:#00ffcc;">
+  🚀 Ye system use karke log apni reels grow kar rahe hain
+</p>
+
+<p style="color:#ff4d4d;">
+  ⚠️ Agar abhi skip kiya toh access expire ho sakta hai
+</p>
+
+<p style="color:red;" id="live">
+  👀 3,214 users already unlock kar chuke hain
+</p>
+
+<p>
+  ⏳ Final access closing in <span id="timer">02:30</span>
+</p>
+
+<button id="startBtn" onclick="convert()">
+  👉 Start Now
+</button>
 
 <script src="script.js"></script>
+
+<script>
+function startPage(){
+
+  if(typeof track === "function"){
+    track('visit','final');
+  }
+
+  // 👀 Live counter
+  setInterval(()=>{
+    let n = Math.floor(Math.random()*4000)+2000;
+    document.getElementById("live").innerText =
+      "👀 " + n + " users already unlock kar chuke hain";
+  },2000);
+
+  // ⏳ Timer
+  let time = 150;
+
+  setInterval(()=>{
+    let m = Math.floor(time/60);
+    let s = time%60;
+
+    document.getElementById("timer").innerText =
+      m + ":" + (s<10?"0":"") + s;
+
+    if(time > 0) time--;
+  },1000);
+
+  // ⏳ Delay CTA
+  setTimeout(()=>{
+    document.getElementById("startBtn").style.display="block";
+  },2000);
+
+  // 🔥 Auto convert backup
+  setTimeout(()=>{
+    convert();
+  },15000);
+}
+</script>
+
 </body>
 </html>
