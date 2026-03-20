@@ -1,10 +1,75 @@
-<body onload="track('visit','lp10')">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 
-<h2>Reels viral karni hai? 🔥</h2>
+  <style>
+    #ctaBtn {
+      display:none;
+      animation: pulse 1.5s infinite;
+    }
 
-<button onclick="goStep1('lp10')">
-👉 YES, SHOW ME
-</button>
+    @keyframes pulse {
+      0% {transform:scale(1);}
+      50% {transform:scale(1.05);}
+      100% {transform:scale(1);}
+    }
+  </style>
+</head>
+
+<body onload="startPage()">
+
+<div class="screen">
+
+  <!-- Hook -->
+  <h2 id="hook">Reels viral karni hai? 🔥</h2>
+
+  <!-- Sub text -->
+  <p>Scroll karo aur hidden trick dekho 👇</p>
+
+  <!-- Live proof -->
+  <p style="color:red;" id="live">
+    👀 2,341 people watching
+  </p>
+
+  <!-- Hidden CTA -->
+  <button id="ctaBtn" onclick="goStep1('lp10')">
+    👉 YES, SHOW ME
+  </button>
+
+</div>
 
 <script src="script.js"></script>
+
+<script>
+function startPage(){
+
+  track('visit','lp10');
+
+  // 🔥 Dynamic hook change
+  const hooks = [
+    "⚠️ 99% creators fail ho rahe 😳",
+    "Hidden algorithm trick 🔥",
+    "Reels explode karne ka secret 🚀"
+  ];
+
+  document.getElementById("hook").innerText =
+    hooks[Math.floor(Math.random()*hooks.length)];
+
+  // 👀 Live counter
+  setInterval(()=>{
+    let n = Math.floor(Math.random()*5000)+1000;
+    document.getElementById("live").innerText =
+    "👀 " + n + " people watching";
+  },2000);
+
+  // ⏳ Delay CTA (2 sec baad show)
+  setTimeout(()=>{
+    document.getElementById("ctaBtn").style.display="block";
+  },2000);
+}
+</script>
+
 </body>
+</html>
