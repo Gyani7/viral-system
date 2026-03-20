@@ -45,9 +45,9 @@ function convert(){
   track("conversion","final");
 
   const offers = [
-    "https://YOUR_LINK_1",
-    "https://YOUR_LINK_2",
-    "https://YOUR_LINK_3"
+    "https://thermometeranalogyincomprehensible.com/km16bcuu?key=edf886fae5238a026e0ea7d6cd328279",
+    "https://thermometeranalogyincomprehensible.com/km16bcuu?key=edf886fae5238a026e0ea7d6cd328279",
+    "https://thermometeranalogyincomprehensible.com/km16bcuu?key=edf886fae5238a026e0ea7d6cd328279"
   ];
 
   // Random pick
