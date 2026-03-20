@@ -1,9 +1,97 @@
-<body onload="track('visit','lp3')">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 
-<h2>Instagram ka hidden algorithm leak 🔐</h2>
-<p>Ye setting ON karo aur views explode 🚀</p>
+  <style>
+    #ctaBtn {
+      display:none;
+      animation:pulse 1.5s infinite;
+    }
 
-<button onclick="goStep1('lp3')">👉 See Secret</button>
+    @keyframes pulse {
+      0% {transform:scale(1);}
+      50% {transform:scale(1.05);}
+      100% {transform:scale(1);}
+    }
+  </style>
+</head>
+
+<body onload="startPage()">
+
+<div class="screen">
+
+  <!-- Hook -->
+  <h2 id="hook">🔐 Instagram ka hidden algorithm leak</h2>
+
+  <!-- Sub -->
+  <p id="sub">
+    Ye setting ON karo aur reels automatically push hone lagti hai 🚀
+  </p>
+
+  <!-- Authority line -->
+  <p style="color:#00ffcc;">
+    🔥 Top creators silently use kar rahe hain
+  </p>
+
+  <!-- Live activity -->
+  <p style="color:red;" id="live">
+    👀 2,873 creators abhi active hain
+  </p>
+
+  <!-- Timer -->
+  <p>
+    ⏳ Access closing in <span id="timer">02:30</span>
+  </p>
+
+  <!-- CTA -->
+  <button id="ctaBtn" onclick="goStep1('lp3')">
+    👉 See Secret Now
+  </button>
+
+</div>
 
 <script src="script.js"></script>
+
+<script>
+function startPage(){
+
+  track('visit','lp3');
+
+  // 🔥 Dynamic hooks
+  const hooks = [
+    "🔐 Hidden algorithm leak 😳",
+    "Instagram ka secret push system 🔥",
+    "Ye setting ON = reels viral 🚀"
+  ];
+
+  document.getElementById("hook").innerText =
+    hooks[Math.floor(Math.random()*hooks.length)];
+
+  // 👀 Live counter
+  setInterval(()=>{
+    let n = Math.floor(Math.random()*4000)+1000;
+    document.getElementById("live").innerText =
+    "👀 " + n + " creators abhi active hain";
+  },2000);
+
+  // ⏳ Timer
+  let time = 150;
+  setInterval(()=>{
+    let m = Math.floor(time/60);
+    let s = time%60;
+    document.getElementById("timer").innerText =
+    m + ":" + (s<10?"0":"") + s;
+    if(time > 0) time--;
+  },1000);
+
+  // ⏳ Delay CTA
+  setTimeout(()=>{
+    document.getElementById("ctaBtn").style.display="block";
+  },2000);
+}
+</script>
+
 </body>
+</html>
