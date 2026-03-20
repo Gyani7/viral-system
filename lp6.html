@@ -1,8 +1,97 @@
-<body onload="track('visit','lp6')">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 
-<h2>Ye 1 setting sab kuch change kar degi 😳</h2>
+  <style>
+    #ctaBtn {
+      display:none;
+      animation:pulse 1.5s infinite;
+    }
 
-<button onclick="goStep1('lp6')">👉 Try Now</button>
+    @keyframes pulse {
+      0% {transform:scale(1);}
+      50% {transform:scale(1.05);}
+      100% {transform:scale(1);}
+    }
+  </style>
+</head>
+
+<body onload="startPage()">
+
+<div class="screen">
+
+  <!-- Hook -->
+  <h2 id="hook">😳 Ye 1 setting sab kuch change kar degi</h2>
+
+  <!-- Suspense text -->
+  <p id="sub">
+    90% log isko OFF rakhte hain… isi wajah se reels viral nahi hoti ❌
+  </p>
+
+  <!-- Curiosity line -->
+  <p style="color:#00ffcc;">
+    🔐 Bas isko ON karo aur difference dekho
+  </p>
+
+  <!-- Live activity -->
+  <p style="color:red;" id="live">
+    👀 2,756 log abhi try kar rahe hain
+  </p>
+
+  <!-- Timer -->
+  <p>
+    ⏳ Setting access closing in <span id="timer">02:30</span>
+  </p>
+
+  <!-- CTA -->
+  <button id="ctaBtn" onclick="goStep1('lp6')">
+    👉 Try This Setting Now
+  </button>
+
+</div>
 
 <script src="script.js"></script>
+
+<script>
+function startPage(){
+
+  track('visit','lp6');
+
+  // 🔥 Dynamic hooks
+  const hooks = [
+    "😳 Ye 1 setting sab kuch change kar degi",
+    "Hidden setting jo sab ignore kar rahe ❌",
+    "Is setting ko ON karo = reels boost 🚀"
+  ];
+
+  document.getElementById("hook").innerText =
+    hooks[Math.floor(Math.random()*hooks.length)];
+
+  // 👀 Live counter
+  setInterval(()=>{
+    let n = Math.floor(Math.random()*4000)+1200;
+    document.getElementById("live").innerText =
+    "👀 " + n + " log abhi try kar rahe hain";
+  },2000);
+
+  // ⏳ Timer
+  let time = 150;
+  setInterval(()=>{
+    let m = Math.floor(time/60);
+    let s = time%60;
+    document.getElementById("timer").innerText =
+    m + ":" + (s<10?"0":"") + s;
+    if(time > 0) time--;
+  },1000);
+
+  // ⏳ Delay CTA
+  setTimeout(()=>{
+    document.getElementById("ctaBtn").style.display="block";
+  },2000);
+}
+</script>
+
 </body>
+</html>
