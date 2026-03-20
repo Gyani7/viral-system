@@ -1,9 +1,97 @@
-<body onload="track('visit','lp4')">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 
-<h2>Creators is trick se grow kar rahe 💸</h2>
-<p>Ab reels viral karna easy ho gaya</p>
+  <style>
+    #ctaBtn {
+      display:none;
+      animation:pulse 1.5s infinite;
+    }
 
-<button onclick="goStep1('lp4')">Start Now</button>
+    @keyframes pulse {
+      0% {transform:scale(1);}
+      50% {transform:scale(1.05);}
+      100% {transform:scale(1);}
+    }
+  </style>
+</head>
+
+<body onload="startPage()">
+
+<div class="screen">
+
+  <!-- Hook -->
+  <h2 id="hook">💸 Creators is trick se grow kar rahe</h2>
+
+  <!-- Sub -->
+  <p id="sub">
+    Ab reels viral karna easy ho gaya hai 🚀
+  </p>
+
+  <!-- Social Proof -->
+  <p style="color:#00ffcc;">
+    🔥 10,000+ creators already use kar rahe
+  </p>
+
+  <!-- Live Activity -->
+  <p style="color:red;" id="live">
+    👀 3,412 log abhi try kar rahe hain
+  </p>
+
+  <!-- Urgency -->
+  <p>
+    ⏳ Limited access • <span id="timer">02:30</span> left
+  </p>
+
+  <!-- CTA -->
+  <button id="ctaBtn" onclick="goStep1('lp4')">
+    🚀 Start Growing Now
+  </button>
+
+</div>
 
 <script src="script.js"></script>
+
+<script>
+function startPage(){
+
+  track('visit','lp4');
+
+  // 🔥 Dynamic hook
+  const hooks = [
+    "💸 Creators is trick se grow kar rahe",
+    "Reels growth ka secret system 🔥",
+    "Fast growth trick jo sab use kar rahe 🚀"
+  ];
+
+  document.getElementById("hook").innerText =
+    hooks[Math.floor(Math.random()*hooks.length)];
+
+  // 👀 Live counter
+  setInterval(()=>{
+    let n = Math.floor(Math.random()*5000)+1500;
+    document.getElementById("live").innerText =
+    "👀 " + n + " log abhi try kar rahe hain";
+  },2000);
+
+  // ⏳ Timer
+  let time = 150;
+  setInterval(()=>{
+    let m = Math.floor(time/60);
+    let s = time%60;
+    document.getElementById("timer").innerText =
+    m + ":" + (s<10?"0":"") + s;
+    if(time > 0) time--;
+  },1000);
+
+  // ⏳ Delay CTA
+  setTimeout(()=>{
+    document.getElementById("ctaBtn").style.display="block";
+  },2000);
+}
+</script>
+
 </body>
+</html>
