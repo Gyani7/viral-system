@@ -1,9 +1,97 @@
-<body onload="track('visit','lp8')">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 
-<h2>50K+ views proof 🔥</h2>
-<p>Ye method genuinely kaam karta hai</p>
+  <style>
+    #ctaBtn {
+      display:none;
+      animation:pulse 1.5s infinite;
+    }
 
-<button onclick="goStep1('lp8')">Check Now</button>
+    @keyframes pulse {
+      0% {transform:scale(1);}
+      50% {transform:scale(1.05);}
+      100% {transform:scale(1);}
+    }
+  </style>
+</head>
+
+<body onload="startPage()">
+
+<div class="screen">
+
+  <!-- Hook -->
+  <h2 id="hook">🔥 50K+ views proof</h2>
+
+  <!-- Sub -->
+  <p id="sub">
+    Ye method genuinely kaam karta hai — log already results le rahe hain 🚀
+  </p>
+
+  <!-- Proof line -->
+  <p style="color:#00ffcc;">
+    📊 Last 24 hours me 100+ reels viral hui
+  </p>
+
+  <!-- Social proof -->
+  <p style="color:red;" id="live">
+    👀 2,945 log abhi check kar rahe hain
+  </p>
+
+  <!-- Urgency -->
+  <p>
+    ⏳ Proof access closing in <span id="timer">02:30</span>
+  </p>
+
+  <!-- CTA -->
+  <button id="ctaBtn" onclick="goStep1('lp8')">
+    🔍 Check Proof Now
+  </button>
+
+</div>
 
 <script src="script.js"></script>
+
+<script>
+function startPage(){
+
+  track('visit','lp8');
+
+  // 🔥 Dynamic hooks
+  const hooks = [
+    "🔥 50K+ views proof",
+    "📊 Real results jo ignore nahi kar sakte",
+    "🚀 Ye method actual me kaam karta hai"
+  ];
+
+  document.getElementById("hook").innerText =
+    hooks[Math.floor(Math.random()*hooks.length)];
+
+  // 👀 Live counter
+  setInterval(()=>{
+    let n = Math.floor(Math.random()*4000)+1500;
+    document.getElementById("live").innerText =
+    "👀 " + n + " log abhi check kar rahe hain";
+  },2000);
+
+  // ⏳ Timer
+  let time = 150;
+  setInterval(()=>{
+    let m = Math.floor(time/60);
+    let s = time%60;
+    document.getElementById("timer").innerText =
+    m + ":" + (s<10?"0":"") + s;
+    if(time > 0) time--;
+  },1000);
+
+  // ⏳ Delay CTA
+  setTimeout(()=>{
+    document.getElementById("ctaBtn").style.display="block";
+  },2000);
+}
+</script>
+
 </body>
+</html>
