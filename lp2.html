@@ -1,9 +1,97 @@
-<body onload="track('visit','lp2')">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 
-<h2>99% log ye mistake kar rahe 😳</h2>
-<p>Isliye reels viral nahi hoti...</p>
+  <style>
+    #ctaBtn {
+      display:none;
+      animation:pulse 1.5s infinite;
+    }
 
-<button onclick="goStep1('lp2')">🔥 Unlock Trick</button>
+    @keyframes pulse {
+      0% {transform:scale(1);}
+      50% {transform:scale(1.05);}
+      100% {transform:scale(1);}
+    }
+  </style>
+</head>
+
+<body onload="startPage()">
+
+<div class="screen">
+
+  <!-- Hook -->
+  <h2 id="hook">⚠️ 99% log ye mistake kar rahe 😳</h2>
+
+  <!-- Sub text -->
+  <p id="sub">
+    Isliye unki reels kabhi viral nahi hoti...
+  </p>
+
+  <!-- Fake proof -->
+  <p style="color:#00ffcc;">
+    🔥 Kal hi 50K views aaye is trick se
+  </p>
+
+  <!-- Live counter -->
+  <p style="color:red;" id="live">
+    👀 3,127 log abhi dekh rahe hain
+  </p>
+
+  <!-- Timer -->
+  <p>
+    ⏳ Offer expires in <span id="timer">02:30</span>
+  </p>
+
+  <!-- CTA -->
+  <button id="ctaBtn" onclick="goStep1('lp2')">
+    🔥 Unlock Trick Now
+  </button>
+
+</div>
 
 <script src="script.js"></script>
+
+<script>
+function startPage(){
+
+  track('visit','lp2');
+
+  // 🔥 Dynamic hook
+  const hooks = [
+    "⚠️ 99% creators fail ho rahe 😳",
+    "Ye mistake tumhari reels ko kill kar rahi ❌",
+    "Hidden algorithm issue 🔥"
+  ];
+
+  document.getElementById("hook").innerText =
+    hooks[Math.floor(Math.random()*hooks.length)];
+
+  // 👀 Live counter
+  setInterval(()=>{
+    let n = Math.floor(Math.random()*5000)+2000;
+    document.getElementById("live").innerText =
+    "👀 " + n + " log abhi dekh rahe hain";
+  },2000);
+
+  // ⏳ Countdown
+  let time = 150;
+  setInterval(()=>{
+    let m = Math.floor(time/60);
+    let s = time%60;
+    document.getElementById("timer").innerText =
+    m + ":" + (s<10?"0":"") + s;
+    if(time > 0) time--;
+  },1000);
+
+  // ⏳ Delay CTA (2 sec)
+  setTimeout(()=>{
+    document.getElementById("ctaBtn").style.display="block";
+  },2000);
+}
+</script>
+
 </body>
+</html>
