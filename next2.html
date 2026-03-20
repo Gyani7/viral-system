@@ -1,12 +1,92 @@
 <!DOCTYPE html>
 <html>
-<body onload="track('visit','next2')" style="text-align:center; padding:20px;">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 
-<h2>Almost Done ⏳</h2>
-<p>Limited access hai</p>
+  <style>
+    #unlockBtn{
+      display:none;
+      animation:pulse 1.5s infinite;
+    }
 
-<button onclick="goFinal()">Unlock</button>
+    @keyframes pulse{
+      0%{transform:scale(1);}
+      50%{transform:scale(1.05);}
+      100%{transform:scale(1);}
+    }
+  </style>
+</head>
+
+<body onload="startPage()" style="text-align:center; padding:20px;">
+
+<h2>⏳ Almost Done</h2>
+
+<p>
+  Tum bas 1 step door ho…  
+  abhi unlock nahi kiya toh access miss ho sakta hai ❌
+</p>
+
+<p style="color:#ff4d4d;">
+  ⚠️ Limited users ko hi access mil raha hai
+</p>
+
+<p style="color:#00ffcc;">
+  🔐 Last step complete karo aur trick unlock karo
+</p>
+
+<p style="color:red;" id="live">
+  👀 2,487 log already unlock kar chuke hain
+</p>
+
+<p>
+  ⏳ Access closing in <span id="timer">02:30</span>
+</p>
+
+<button id="unlockBtn" onclick="goFinal()">
+  🔓 Unlock Now
+</button>
 
 <script src="script.js"></script>
+
+<script>
+function startPage(){
+
+  if(typeof track === "function"){
+    track('visit','next2');
+  }
+
+  // 👀 Live counter
+  setInterval(()=>{
+    let n = Math.floor(Math.random()*3000)+1500;
+    document.getElementById("live").innerText =
+      "👀 " + n + " log already unlock kar chuke hain";
+  },2000);
+
+  // ⏳ Timer
+  let time = 150;
+
+  setInterval(()=>{
+    let m = Math.floor(time/60);
+    let s = time%60;
+
+    document.getElementById("timer").innerText =
+      m + ":" + (s<10?"0":"") + s;
+
+    if(time > 0) time--;
+  },1000);
+
+  // ⏳ Delay button
+  setTimeout(()=>{
+    document.getElementById("unlockBtn").style.display="block";
+  },2000);
+
+  // 🔥 Auto push (final conversion backup)
+  setTimeout(()=>{
+    window.location.href = "final.html";
+  },12000);
+}
+</script>
+
 </body>
 </html>
